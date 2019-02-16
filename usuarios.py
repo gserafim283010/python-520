@@ -1,13 +1,29 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 def fui(l):
-    return l['Nome']
+    return l['nome']
+
+def fprint(i, user):
+    print('{0:.>4} {1:.<20} {2:.<40}'.format(i,user['nome'], user['email']))
+
+def hprint():
+    return ('{0:.4} {1:.<20} {2:.<40}'.format('ID','NOME', 'EMAIL')) 
 
 usuario = [] 
 for linha in open('usuarios.csv'):
     A0, A1, A2 = linha.split(',')
-    usuario.append({"Nome": A0.strip(),"Idade" :int(A1.strip()),"E-mail" :A2.strip()})
-for linha in sorted(usuario, key=fui):
-    print(linha['Nome'])
+    usuario.append({"nome": A0.strip(),"idade" :int(A1.strip()),"email" :A2.strip()})
+print(hprint())
+
+for l,u in enumerate(sorted(usuario, key=fui), start=-1):
+    fprint(l,u)
+
+
+
+
+
+
+
+
 
 exit()
 nomes = []
